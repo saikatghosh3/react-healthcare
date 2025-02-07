@@ -31,7 +31,7 @@ export const AdminLoginForm = () => {
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             className="pl-10 w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter admin username"
+            placeholder="Enter admin username (Admin)"
             required
           />
         </div>
@@ -46,7 +46,7 @@ export const AdminLoginForm = () => {
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             className="pl-10 w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter admin password"
+            placeholder="Enter admin password (admin123)"
             required
           />
         </div>
