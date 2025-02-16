@@ -81,7 +81,7 @@ export const Home = () => {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           to="/services"
-          className="bg-blue-500 text-white px-8 py-3 rounded-full transition-all shadow-md hover:shadow-blue-400/50 hover:scale-105 hover:bg-blue-600 inline-flex items-center justify-center"
+          className="bg-red-800 text-white px-8 py-3 rounded-full transition-all shadow-md hover:shadow-blue-400/50 hover:scale-105 hover:bg-red-600 inline-flex items-center justify-center"
         >
           Our Services <ArrowRight className="ml-2 h-5 w-5" />
         </Link>
