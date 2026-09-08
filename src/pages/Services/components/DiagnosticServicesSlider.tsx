@@ -40,7 +40,7 @@ export const DiagnosticServicesSlider: React.FC<DiagnosticServicesSliderProps> =
 
       <div
         ref={sliderRef}
-        className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-6 py-4 px-8"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-8 py-4"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -50,7 +50,7 @@ export const DiagnosticServicesSlider: React.FC<DiagnosticServicesSliderProps> =
         {services.map((service) => (
           <div
             key={service.title}
-            className="flex-none w-[350px] snap-start"
+            className="w-[85vw] max-w-[360px] flex-none snap-start sm:w-[360px]"
           >
             <ServiceCard {...service} isDiagnostic={true} />
           </div>

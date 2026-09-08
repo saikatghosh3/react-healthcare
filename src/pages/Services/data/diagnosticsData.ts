@@ -13,7 +13,7 @@ export const diagnosticsData = [
     title: "General Health Check-up",
     description: "Basic health assessment including blood tests, urine analysis, chest X-ray, and ECG for overall health evaluation.",
     price: "$199",
-    image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b3e?auto=format&fit=crop&q=80&w=500",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=500",
     link: "/services/general-health",
     tests: ["Complete Blood Count", "Liver Function", "Kidney Function", "Chest X-ray", "ECG"]
   },
@@ -22,7 +22,7 @@ export const diagnosticsData = [
     title: "Master Gastro Liver Screening (MGL)",
     description: "Detailed screening of digestive system and liver health with advanced diagnostic tests.",
     price: "$299",
-    image: "https://images.unsplash.com/photo-1631815589825-ff8be7c01417?auto=format&fit=crop&q=80&w=500",
+    image: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&q=80&w=500",
     link: "/services/gastro-liver",
     tests: ["Liver Function", "Hepatitis Profile", "Ultrasound Abdomen", "Gastroscopy", "Stool Analysis"]
   },
@@ -67,7 +67,7 @@ export const diagnosticsData = [
     title: "Vita Plus",
     description: "Advanced vitamin and mineral screening with comprehensive nutritional analysis.",
     price: "$229",
-    image: "https://images.unsplash.com/photo-1571942676516-bcab84649e44?auto=format&fit=crop&q=80&w=500",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=500",
     link: "/services/vita-plus",
     tests: ["Complete Vitamin Panel", "Mineral Profile", "Hormone Test", "Antioxidant Levels", "Omega Fatty Acids"]
   },

@@ -1,70 +1,66 @@
-// import React from 'react';
+import { motion } from 'framer-motion';
+import { Eye, HeartHandshake, Target } from 'lucide-react';
+import { SectionHeading } from '../Home/components/SectionHeading';
 
-// export const MissionVision = () => {
-//   return (
-//     <section className="py-16 bg-gray-50">
-//       <div className="container mx-auto px-4">
-//         <div className="grid md:grid-cols-2 gap-12">
-//           <div className="bg-white p-8 rounded-xl shadow-lg">
-//             <h2 className="text-2xl font-bold mb-4 text-blue-600">Our Mission</h2>
-//             <p className="text-gray-600">
-//               To provide exceptional healthcare services that improve the quality of life for our patients
-//               through compassionate care, innovative treatments, and a commitment to excellence.
-//             </p>
-//           </div>
-//           <div className="bg-white p-8 rounded-xl shadow-lg">
-//             <h2 className="text-2xl font-bold mb-4 text-blue-600">Our Vision</h2>
-//             <p className="text-gray-600">
-//               To be the leading healthcare provider recognized for clinical excellence,
-//               patient-centered care, and innovative medical solutions that enhance community well-being.
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-import React from "react";
-import { motion } from "framer-motion";
+const cards = [
+  {
+    icon: Target,
+    title: 'Our Mission',
+    text: "To provide exceptional healthcare services that improve the quality of life for our patients through compassionate care, innovative treatments, and a commitment to excellence.",
+    soft: 'bg-blue-50 text-blue-600',
+  },
+  {
+    icon: Eye,
+    title: 'Our Vision',
+    text: "To be the leading healthcare provider recognized for clinical excellence, patient-centered care, and innovative medical solutions that enhance community well-being.",
+    soft: 'bg-cyan-50 text-cyan-600',
+  },
+  {
+    icon: HeartHandshake,
+    title: 'Our Values',
+    text: "Compassion, integrity, and accountability guide every interaction. We treat every patient with dignity, respect, and genuine care — because health is personal.",
+    soft: 'bg-rose-50 text-rose-600',
+  },
+];
 
 export const MissionVision = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-50 to-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Mission */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.15)" }}
-            className="bg-white p-8 rounded-2xl shadow-lg transform transition-all duration-300"
-          >
-            <h2 className="text-3xl font-semibold mb-4 text-blue-700">Our Mission</h2>
-            <p className="text-gray-700 leading-relaxed">
-              To provide exceptional healthcare services that improve the quality of life for our patients
-              through compassionate care, innovative treatments, and a commitment to excellence.
-            </p>
-          </motion.div>
+    <section className="bg-gray-50 py-20 lg:py-24">
+      <div className="container mx-auto px-4">
+        <SectionHeading
+          eyebrow="What Drives Us"
+          title="Our Mission, Vision &"
+          highlight="Values"
+          description="The principles that shape every decision we make and every care plan we deliver."
+        />
 
-          {/* Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.15)" }}
-            className="bg-white p-8 rounded-2xl shadow-lg transform transition-all duration-300"
-          >
-            <h2 className="text-3xl font-semibold mb-4 text-blue-700">Our Vision</h2>
-            <p className="text-gray-700 leading-relaxed">
-              To be the leading healthcare provider recognized for clinical excellence,
-              patient-centered care, and innovative medical solutions that enhance community well-being.
-            </p>
-          </motion.div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {cards.map((card, index) => (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
+              className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-card ring-1 ring-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-lift"
+            >
+              {/* Accent bar */}
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+              <span
+                className={`flex h-14 w-14 items-center justify-center rounded-2xl ${card.soft}`}
+              >
+                <card.icon className="h-7 w-7" />
+              </span>
+
+              <h3 className="mt-6 text-xl font-bold text-slate-900">
+                {card.title}
+              </h3>
+              <p className="mt-3 leading-relaxed text-slate-500">{card.text}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
-
-

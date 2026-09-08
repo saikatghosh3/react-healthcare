@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { BookingProvider } from './context/BookingContext';
 import { Navigation } from './components/layout/Navigation';
 import { Footer } from './components/layout/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
+import { BackToTop } from './components/BackToTop';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
@@ -24,6 +26,7 @@ export const App = () => {
   return (
     <BookingProvider>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navigation />
           <main className="flex-grow pt-32">
@@ -47,6 +50,7 @@ export const App = () => {
             </Routes>
           </main>
           <Footer />
+        <BackToTop />
         </div>
       </Router>
     </BookingProvider>

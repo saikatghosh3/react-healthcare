@@ -7,25 +7,22 @@ import { SocialLinks } from './components/SocialLinks';
 
 export const Contact = () => {
   return (
-    <div>
+    <div className="bg-slate-50">
       <ContactHero />
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left Column */}
+
+      <div className="container mx-auto px-4 py-14 sm:py-16">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <div className="space-y-8">
             <ContactInfo />
             <SocialLinks />
           </div>
-          
-          {/* Right Column */}
-          <div className="space-y-8">
+
+          <div>
             <ContactForm />
           </div>
         </div>
 
-        {/* Map Section */}
-        <div className="mt-16">
+        <div className="mt-8">
           <Map />
         </div>
       </div>

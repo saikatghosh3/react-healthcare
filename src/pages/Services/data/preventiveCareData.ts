@@ -12,7 +12,7 @@ export const preventiveCareData = [
     title: "Vaccination",
     description: "Full range of vaccinations for children and adults. Stay protected with our comprehensive vaccination services.",
     price: "From $30",
-    image: "https://images.unsplash.com/photo-1632685062337-095b120f8a86?auto=format&fit=crop&q=80&w=500",
+    image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=500",
     link: "/services/vaccination"
   },
   {

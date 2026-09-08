@@ -4,7 +4,7 @@ export const emergencyData = [
     title: "24/7 Emergency Care",
     description: "Round-the-clock emergency medical services with rapid response. Our emergency team is always ready to provide immediate care.",
     price: "From $500",
-    image: "https://images.unsplash.com/photo-1587746746377-5399a1dc7c56?auto=format&fit=crop&q=80&w=500",
+    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=500",
     link: "/services/emergency"
   },
   {
