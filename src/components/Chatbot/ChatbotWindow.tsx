@@ -204,7 +204,7 @@ export const ChatbotWindow = () => {
             transition={{ type: 'spring', stiffness: 320, damping: 22 }}
             onClick={toggleChat}
             aria-label="Open healthcare assistant"
-            className="group flex items-center gap-3 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 py-3 pl-4 pr-5 text-white shadow-lift transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            className="group flex items-center gap-3 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 py-3 pl-4 pr-5 text-white shadow-[0_8px_30px_rgba(37,99,235,0.5)] ring-2 ring-cyan-300/80 ring-offset-2 ring-offset-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-cyan-200"
           >
             <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25">
               <Bot className="h-5 w-5" />
@@ -213,7 +213,7 @@ export const ChatbotWindow = () => {
                 <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-blue-600 bg-emerald-400" />
               </span>
             </span>
-            <span className="text-sm font-bold">Ask MedCare</span>
+            <span className="text-sm font-extrabold">Healthcare Assistant</span>
           </motion.button>
         )}
       </AnimatePresence>
