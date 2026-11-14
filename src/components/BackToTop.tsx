@@ -39,7 +39,7 @@ export const BackToTop = () => {
           onClick={scrollTop}
           aria-label="Scroll back to top"
           title="Back to top"
-          className="group fixed bottom-36 left-6 z-40 flex h-16 w-16 flex-col items-center justify-center rounded-full border border-white/80 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 text-white shadow-[0_8px_24px_rgba(37,99,235,0.5)] ring-4 ring-white/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.65)] focus:outline-none focus:ring-4 focus:ring-cyan-200 sm:bottom-6"
+          className="group fixed bottom-24 left-4 z-40 flex h-12 w-12 flex-col items-center justify-center rounded-full border border-white/80 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 text-white shadow-[0_6px_18px_rgba(37,99,235,0.4)] ring-2 ring-white/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.65)] focus:outline-none focus:ring-4 focus:ring-cyan-200 sm:bottom-6 sm:left-6 sm:h-16 sm:w-16 sm:ring-4"
         >
           <svg
             className="absolute inset-0 h-full w-full -rotate-90"
@@ -79,8 +79,8 @@ export const BackToTop = () => {
               </linearGradient>
             </defs>
           </svg>
-          <ArrowUp className="relative h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
-          <span className="relative mt-0.5 text-[0.55rem] font-extrabold tracking-[0.16em] text-white/90">
+          <ArrowUp className="relative h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 sm:h-5 sm:w-5" />
+          <span className="relative mt-0.5 text-[0.42rem] font-extrabold tracking-[0.12em] text-white/90 sm:text-[0.55rem] sm:tracking-[0.16em]">
             TOP
           </span>
         </motion.button>

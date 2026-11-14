@@ -89,7 +89,7 @@ export const ChatbotWindow = () => {
     .find((m) => m.isBot && m.suggestions?.length)?.suggestions;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
@@ -204,16 +204,17 @@ export const ChatbotWindow = () => {
             transition={{ type: 'spring', stiffness: 320, damping: 22 }}
             onClick={toggleChat}
             aria-label="Open healthcare assistant"
-            className="group flex items-center gap-3 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 py-3 pl-4 pr-5 text-white shadow-[0_8px_30px_rgba(37,99,235,0.5)] ring-2 ring-cyan-300/80 ring-offset-2 ring-offset-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-cyan-200"
+            className="group flex items-center gap-2 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 p-2 text-white shadow-[0_6px_20px_rgba(37,99,235,0.4)] ring-1 ring-cyan-300/80 ring-offset-1 ring-offset-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-cyan-200 sm:gap-3 sm:py-3 sm:pl-4 sm:pr-5 sm:ring-2 sm:ring-offset-2"
           >
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25">
-              <Bot className="h-5 w-5" />
+            <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25 sm:h-9 sm:w-9">
+              <Bot className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-blue-600 bg-emerald-400" />
               </span>
             </span>
-            <span className="text-sm font-extrabold">Healthcare Assistant</span>
+            <span className="text-xs font-extrabold sm:hidden">Assistant</span>
+            <span className="hidden text-sm font-extrabold sm:inline">Healthcare Assistant</span>
           </motion.button>
         )}
       </AnimatePresence>
