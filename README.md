@@ -28,13 +28,10 @@ The UI is fully responsive, animation-rich, and built with a clean, professional
 
 ## 📸 Screenshot
 
-> **Placeholder — add your screenshot here.**
->
-> Save your homepage screenshot as `public/screenshot.png` and uncomment the line below:
->
-> ```md
-> ![HealthCare Homepage](public/screenshot.png)
-> ```
+<p align="center">
+  <img src="public/screenshot.png" alt="HealthCare homepage" width="49%" />
+  <img src="public/screenshot-services.png" alt="HealthCare services page" width="49%" />
+</p>
 
 ---
 
