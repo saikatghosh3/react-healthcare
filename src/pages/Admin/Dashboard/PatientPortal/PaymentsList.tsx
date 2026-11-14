@@ -1,76 +1,117 @@
-import React from 'react';
-import { DollarSign, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { CreditCard, Trash2, DollarSign, Receipt } from 'lucide-react';
 import { getPayments } from '../../../../utils/paymentUtils';
 
+interface Payment {
+  id: string;
+  patientId: string;
+  patientName: string;
+  date: string;
+  description: string;
+  amount: number;
+  status: 'paid' | 'pending' | 'overdue';
+}
+
+const statusStyles: Record<Payment['status'], string> = {
+  paid: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100',
+  pending: 'bg-amber-50 text-amber-700 ring-1 ring-amber-100',
+  overdue: 'bg-red-50 text-red-600 ring-1 ring-red-100',
+};
+
 export const PaymentsList = () => {
-  const payments = getPayments();
+  const [payments, setPayments] = useState<Payment[]>(() => getPayments());
 
   const handleDelete = (id: string) => {
     if (window.confirm('Are you sure you want to delete this payment record?')) {
-      const updatedPayments = payments.filter((payment) => payment.id !== id);
-      localStorage.setItem('payments', JSON.stringify(updatedPayments));
-      window.location.reload();
+      const updated = payments.filter((payment) => payment.id !== id);
+      localStorage.setItem('payments', JSON.stringify(updated));
+      setPayments(updated);
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'paid':
-        return 'bg-green-100 text-green-800';
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'overdue':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
+  const totalAmount = payments.reduce((sum, payment) => sum + payment.amount, 0);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <h2 className="text-xl font-semibold mb-6">Payment History</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left py-3">Patient</th>
-              <th className="text-left py-3">Date</th>
-              <th className="text-left py-3">Description</th>
-              <th className="text-left py-3">Amount</th>
-              <th className="text-left py-3">Status</th>
-              <th className="text-left py-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments.map((payment) => (
-              <tr key={payment.id} className="border-b hover:bg-gray-50">
-                <td className="py-3">{payment.patientName}</td>
-                <td className="py-3">{new Date(payment.date).toLocaleDateString()}</td>
-                <td className="py-3">{payment.description}</td>
-                <td className="py-3">
-                  <div className="flex items-center">
-                    <DollarSign className="h-5 w-5 text-gray-600" />
-                    <span>{payment.amount.toFixed(2)}</span>
-                  </div>
-                </td>
-                <td className="py-3">
-                  <span className={`px-2 py-1 rounded-full text-sm ${getStatusColor(payment.status)}`}>
-                    {payment.status}
-                  </span>
-                </td>
-                <td className="py-3">
-                  <button
-                    onClick={() => handleDelete(payment.id)}
-                    className="text-red-600 hover:text-red-800"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card">
+      {/* Card header */}
+      <div className="flex items-center gap-3 border-b border-slate-100 bg-slate-50/60 px-6 py-4">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+          <CreditCard className="h-5 w-5" />
+        </span>
+        <div>
+          <h3 className="font-extrabold text-slate-900">Payment History</h3>
+          <p className="text-xs text-slate-500">
+            ${totalAmount.toFixed(2)} total billing
+          </p>
+        </div>
       </div>
+
+      {payments.length === 0 ? (
+        <div className="px-6 py-14 text-center">
+          <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
+            <Receipt className="h-7 w-7" />
+          </span>
+          <p className="mt-4 font-bold text-slate-800">No payments yet</p>
+          <p className="mt-1 text-sm text-slate-500">
+            Payments made by patients will appear here.
+          </p>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="min-w-full">
+            <thead>
+              <tr className="border-b border-slate-100 text-left text-xs font-bold uppercase tracking-wider text-slate-400">
+                <th className="px-6 py-3">Patient</th>
+                <th className="px-6 py-3">Date</th>
+                <th className="px-6 py-3">Description</th>
+                <th className="px-6 py-3">Amount</th>
+                <th className="px-6 py-3">Status</th>
+                <th className="px-6 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {payments.map((payment) => (
+                <tr
+                  key={payment.id}
+                  className="border-b border-slate-50 transition-colors last:border-0 hover:bg-slate-50/60"
+                >
+                  <td className="px-6 py-4 font-bold text-slate-800">
+                    {payment.patientName}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-slate-600">
+                    {new Date(payment.date).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-slate-600">
+                    {payment.description}
+                  </td>
+                  <td className="px-6 py-4 font-bold text-slate-800">
+                    <span className="inline-flex items-center gap-1">
+                      <DollarSign className="h-3.5 w-3.5 text-emerald-500" />
+                      {payment.amount.toFixed(2)}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex rounded-full px-3 py-1 text-xs font-bold capitalize ${statusStyles[payment.status]}`}
+                    >
+                      {payment.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <button
+                      onClick={() => handleDelete(payment.id)}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-50 text-red-600 transition-colors hover:bg-red-100"
+                      title="Delete payment"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

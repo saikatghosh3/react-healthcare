@@ -48,7 +48,7 @@ export const AboutHero = () => {
               initial="hidden"
               animate="show"
               custom={1}
-              className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl text-balance"
+              className="mt-5 text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl text-balance"
             >
               Healthcare Driven by{' '}
               <span className="text-blue-600">Compassion</span> &amp; Excellence

@@ -6,6 +6,7 @@ import { HowItWorks } from './Home/components/HowItWorks';
 import { DoctorsPreview } from './Home/components/DoctorsPreview';
 import { HealthPackages } from './Home/components/HealthPackages';
 import { EmergencyCta } from './Home/components/EmergencyCta';
+import { FaqSection } from './Home/components/FaqSection';
 import { Testimonials } from './Home/components/Testimonials';
 import { CtaBanner } from './Home/components/CtaBanner';
 import { ChatbotWindow } from '../components/Chatbot/ChatbotWindow';
@@ -21,6 +22,8 @@ export const Home = () => {
       <DoctorsPreview />
       <HealthPackages />
       <EmergencyCta />
+
+      <FaqSection />
 
       <Testimonials />
       <CtaBanner />

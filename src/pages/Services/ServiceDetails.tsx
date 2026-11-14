@@ -125,7 +125,7 @@ export const ServiceDetails = () => {
               </span>
             </div>
 
-            <h1 className="mt-6 text-balance text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+            <h1 className="mt-5 text-balance text-3xl font-extrabold leading-snug text-white sm:text-4xl">
               {service.title}
             </h1>
             <p className="mt-4 max-w-xl text-lg font-medium leading-relaxed text-white/90">

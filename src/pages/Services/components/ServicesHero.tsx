@@ -41,7 +41,7 @@ export const ServicesHero = () => {
             Our Services
           </span>
 
-          <h1 className="mt-6 text-balance text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-balance text-3xl font-extrabold leading-snug tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
             Complete healthcare,{' '}
             <span className="text-blue-600">under one roof</span>
           </h1>

@@ -128,7 +128,7 @@ export const Feedback = () => {
           <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-300">
             <Sparkles className="h-4 w-4" /> Your Voice Matters
           </span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+            <h1 className="mx-auto mt-6 max-w-3xl text-balance text-3xl font-extrabold leading-snug text-white sm:text-4xl">
             Share Your Experience, <span className="text-emerald-400">Shape Our Care</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-slate-300">

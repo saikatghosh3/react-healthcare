@@ -1,0 +1,664 @@
+{
+  "meta": {
+    "botName": "MedCare Assistant",
+    "siteName": "HealthCare",
+    "welcome": "Hello! I'm your HealthCare assistant. I can help you with appointments, doctors, services, payments and anything else about our website. What would you like to know?",
+    "greetings": [
+      "Hello! How can I help you with your healthcare needs today?",
+      "Hi there! I'm here to answer any question about our hospital and services. What can I do for you?",
+      "Welcome! Ask me anything about booking appointments, our doctors, services or payments."
+    ],
+    "fallback": "I couldn't find a direct answer to that in my knowledge base. Please try rephrasing your question, or ask about topics like:\n- Book an appointment\n- Doctor availability\n- Video consultation\n- Home sample collection\n- Payment options\n- Contact information",
+    "welcomeSuggestions": [
+      "How do I book an appointment?",
+      "Which doctors are available?",
+      "What are the working hours?",
+      "How does video consultation work?",
+      "How can I contact you?",
+      "What is home sample collection?"
+    ]
+  },
+  "faqs": [
+    {
+      "id": "about-hospital",
+      "category": "general",
+      "featured": true,
+      "keywords": ["about the hospital", "about this website", "what is this website", "about us", "tell me about", "about the company", "who are you", "introduce"],
+      "questions": ["What is this website about?", "Tell me about your hospital", "Who are you?"],
+      "answer": "HealthCare is a modern healthcare platform offering a complete range of medical services. You can browse and book appointments with board-certified specialists, explore our services (cardiology, neurology, orthopedics, dermatology, pediatrics and more), book video consultations, order home sample collection, and manage everything through your patient portal. We have three facilities across the city plus 24/7 emergency care.",
+      "link": "/about",
+      "linkLabel": "Learn more about us",
+      "suggestions": ["What services do you offer?", "Which doctors are available?", "What are the working hours?"]
+    },
+    {
+      "id": "why-choose-us",
+      "category": "general",
+      "keywords": ["why choose", "why you", "why us", "benefits", "best", "advantages", "special about", "different"],
+      "questions": ["Why should I choose you?", "What makes your hospital special?"],
+      "answer": "Patients choose HealthCare because of:\n- Board-certified specialists with 10–20+ years of experience\n- Advanced, modern diagnostic and treatment technology\n- 24/7 emergency and urgent care availability\n- Transparent, affordable pricing with flexible payment options\n- Personalized treatment plans and dedicated follow-ups\n- Accredited facilities with nationally recognized quality standards",
+      "link": "/about",
+      "linkLabel": "View about page",
+      "suggestions": ["What services do you offer?", "Are your doctors experienced?", "Do you accept insurance?"]
+    },
+    {
+      "id": "working-hours",
+      "category": "general",
+      "featured": true,
+      "keywords": ["working hours", "opening hours", "office hours", "timing", "when are you open", "what time", "open today", "operation hours", "business hours"],
+      "questions": ["What are your working hours?", "When are you open?", "What time does the clinic open?"],
+      "answer": "Our working hours are:\n- Emergency Care: 24/7 / 365 days\n- Outpatient consultations: Monday to Friday, 8 AM – 8 PM\n- Weekends: Saturday, 9 AM – 5 PM\nSunday is closed for outpatient services, but the emergency department stays open around the clock.",
+      "link": "/contact",
+      "linkLabel": "Contact us",
+      "suggestions": ["Do you accept walk-ins?", "Where are you located?", "What is the emergency number?"]
+    },
+    {
+      "id": "walk-ins",
+      "category": "general",
+      "keywords": ["walk in", "walk-in", "no appointment", "without appointment", "coming without booking", "walkin"],
+      "questions": ["Can I visit without an appointment?", "Do you accept walk-ins?"],
+      "answer": "Yes! Walk-ins are welcome. If you arrive without an appointment, our team will fit you in as soon as possible. For emergencies, no appointment is needed at all — we triage and stabilize patients immediately.",
+      "link": "/contact",
+      "linkLabel": "See locations",
+      "suggestions": ["What are the working hours?", "How do I book an appointment?", "Where are you located?"]
+    },
+    {
+      "id": "insurance",
+      "category": "general",
+      "keywords": ["insurance", "insurance accepted", "health insurance", "claim", "coverage", "covered by insurance"],
+      "questions": ["Do you accept insurance?", "Can I use my health insurance?"],
+      "answer": "Yes, we accept major health insurance plans. You can also pay securely by card and UPI. During checkout you can choose your preferred payment method, and our billing team can help you with insurance claims. For the smoothest experience, please carry your insurance card details when you visit.",
+      "link": "/contact",
+      "linkLabel": "Contact billing",
+      "suggestions": ["How do I pay?", "Is payment secure?", "Are there any hidden fees?"]
+    },
+    {
+      "id": "book-appointment",
+      "category": "appointments",
+      "featured": true,
+      "keywords": ["book an appointment", "book appointment", "book a appointment", "schedule appointment", "make an appointment", "appointment booking", "how to book", "how do i book", "take appointment", "appointment"],
+      "questions": ["How do I book an appointment?", "How can I schedule a visit?"],
+      "answer": "Booking an appointment is simple:\n1. Go to the Doctors page.\n2. Browse specialists and pick the doctor you'd like to see.\n3. Click 'Book Appointment' and fill in your name, phone and email.\n4. Choose an available date and time slot.\n5. Confirm — and you'll receive a confirmation with all your details.\nVideo consultations and home sample collection can also be booked directly from their pages.",
+      "link": "/doctors",
+      "linkLabel": "Browse doctors",
+      "suggestions": ["Which doctors are available today?", "What info is needed to book?", "How much does a consultation cost?"]
+    },
+    {
+      "id": "booking-account",
+      "category": "appointments",
+      "keywords": ["need an account to book", "create account to book", "sign up to book", "account required", "do i need an account", "book without account"],
+      "questions": ["Do I need an account to book an appointment?", "Must I sign up before booking?"],
+      "answer": "No account is required to book. You can book directly by providing your name, phone and email. However, creating a free account gives you a patient portal where you can track your upcoming appointments, view medical records, review payment history and manage everything in one place.",
+      "link": "/auth",
+      "linkLabel": "Create an account",
+      "suggestions": ["How do I book an appointment?", "What can I do in the patient portal?"]
+    },
+    {
+      "id": "booking-info",
+      "category": "appointments",
+      "keywords": ["what information needed", "what info do i need", "details to book", "info required", "documents needed"],
+      "questions": ["What information do I need to book?"],
+      "answer": "When booking you'll need:\n- Your full name\n- A valid phone number\n- Your email address\n- A brief reason for the visit\nThen simply choose your preferred doctor, date and time slot. No advance payment is needed for most appointments.",
+      "link": "/doctors",
+      "linkLabel": "Start booking",
+      "suggestions": ["How do I book an appointment?", "How much does a consultation cost?"]
+    },
+    {
+      "id": "confirmation",
+      "category": "appointments",
+      "keywords": ["confirmation", "how do i know it is confirmed", "booking confirmed", "appointment confirm", "email confirmation"],
+      "questions": ["How will I know my appointment is confirmed?", "Do I get a confirmation?"],
+      "answer": "After you confirm your booking, your appointment is saved instantly and you'll receive a confirmation email with your appointment details. You can also view all upcoming appointments anytime in your patient portal.",
+      "link": "/portal",
+      "linkLabel": "Open patient portal",
+      "suggestions": ["How do I book an appointment?", "Where are my appointments shown?"]
+    },
+    {
+      "id": "reschedule-cancel",
+      "category": "appointments",
+      "keywords": ["reschedule", "cancel appointment", "change appointment", "cancel booking", "postpone", "reschedule appointment", "cancel my appointment"],
+      "questions": ["Can I reschedule or cancel my appointment?", "How do I change my appointment time?"],
+      "answer": "Yes, you can reschedule or cancel easily. For video consultations, you can reschedule or cancel with a single tap. For in-clinic visits, please contact reception and we'll move you to a new slot — change or cancel with zero hassle.",
+      "link": "/contact",
+      "linkLabel": "Contact reception",
+      "suggestions": ["How do I book an appointment?", "What is the contact number?"]
+    },
+    {
+      "id": "doctor-availability",
+      "category": "appointments",
+      "featured": true,
+      "keywords": ["doctor availability", "available doctor", "which doctor is available", "doctor schedule", "when is the doctor available", "available today", "doctor timings", "doctor times", "available doctors"],
+      "questions": ["Which doctors are available?", "How do I check a doctor's availability?"],
+      "answer": "Each doctor shows their live weekly schedule on the Doctors page. For example:\n- Dr. Sarah Johnson (Cardiologist): Mon, Wed, Fri, 9 AM – 5 PM\n- Dr. Michael Chen (Neurologist): Tue, Thu, Sat, 9 AM – 3 PM\n- Dr. Emily Williams (Pediatrician): Mon, Tue, Thu, 9 AM – 5 PM\nOpen any doctor's profile to see their exact available days and time slots, then book directly.",
+      "link": "/doctors",
+      "linkLabel": "Check doctor availability",
+      "suggestions": ["Which doctors are available?", "How do I book an appointment?", "Are the doctors experienced?"]
+    },
+    {
+      "id": "what-to-bring",
+      "category": "appointments",
+      "keywords": ["what to bring", "bring to visit", "documents to bring", "what should i bring", "carry with me"],
+      "questions": ["What should I bring to my visit?"],
+      "answer": "Please bring:\n- A valid photo ID\n- Your previous medical records or reports (if any)\n- A list of current medications you take\n- Your insurance card (if you plan to claim)\n- A referral letter, if you were referred by another doctor",
+      "link": "/doctors",
+      "linkLabel": "Book a visit",
+      "suggestions": ["How do I book an appointment?", "Do you accept insurance?"]
+    },
+    {
+      "id": "consultation-fee",
+      "category": "appointments",
+      "keywords": ["consultation fee", "how much is consultation", "appointment cost", "consultation price", "doctor fee", "how much does it cost", "pricing", "charges", "fees"],
+      "questions": ["How much does a consultation cost?", "What are your consultation fees?"],
+      "answer": "Consultation fees vary by specialty and are shown transparently on each service:\n- Cardiology: from $200\n- Neurology: from $250\n- Orthopedics: from $180\n- Urgent Care: from $100\n- Annual Check-up: $150\n- Emergency Care: from $500\n- Ambulance: from $400\nYou'll always see the price before you confirm, with no hidden fees.",
+      "link": "/services",
+      "linkLabel": "View services & prices",
+      "suggestions": ["How do I book an appointment?", "Do you accept insurance?", "Are there any hidden fees?"]
+    },
+    {
+      "id": "book-for-someone",
+      "category": "appointments",
+      "keywords": ["book for someone else", "book for family", "book for my child", "book for my parent", "book for another person", "family member booking"],
+      "questions": ["Can I book an appointment for a family member?", "Can I book for my child?"],
+      "answer": "Absolutely. You can book for your child, parents or any family member. Our pediatricians (Dr. Emily Williams, Dr. James Wilson) specialize in child healthcare. Simply use your family member's details when booking so the appointment and records are kept correctly.",
+      "link": "/doctors",
+      "linkLabel": "Browse doctors",
+      "suggestions": ["Which pediatricians are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "doctors-list",
+      "category": "doctors",
+      "featured": true,
+      "keywords": ["which doctors", "list of doctors", "doctors available", "what doctors", "doctor list", "our doctors", "specialists available", "who are the doctors"],
+      "questions": ["What doctors are available?", "Which specialists do you have?"],
+      "answer": "We have 10 board-certified specialists across 5 departments:\n- Cardiology: Dr. Sarah Johnson, Dr. Robert Martinez\n- Neurology: Dr. Michael Chen, Dr. Lisa Anderson\n- Pediatrics: Dr. Emily Williams, Dr. James Wilson\n- Orthopedics: Dr. David Thompson, Dr. Maria Rodriguez\n- Dermatology: Dr. Rachel Kim, Dr. Thomas Brown\nVisit the Doctors page to see their full profiles, ratings and schedules.",
+      "link": "/doctors",
+      "linkLabel": "View all doctors",
+      "suggestions": ["How do I choose the right doctor?", "Are the doctors experienced?", "How do I book an appointment?"]
+    },
+    {
+      "id": "choose-doctor",
+      "category": "doctors",
+      "keywords": ["choose doctor", "pick doctor", "which doctor should i see", "best doctor for", "right specialist", "how to choose a doctor"],
+      "questions": ["How do I choose the right doctor?", "Which doctor should I see?"],
+      "answer": "To pick the right doctor:\n1. Identify the specialty that matches your condition (heart → cardiologist, skin → dermatologist, child → pediatrician, etc.).\n2. Compare ratings, years of experience, languages spoken and real patient reviews.\n3. Check the doctor's weekly availability and pick a convenient slot.\nEach doctor profile on our site shows all of this so you can decide with confidence.",
+      "link": "/doctors",
+      "linkLabel": "Compare doctors",
+      "suggestions": ["Which doctors are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "doctor-experience",
+      "category": "doctors",
+      "keywords": ["are the doctors experienced", "qualified doctors", "doctor qualification", "doctor experience", "credentials", "certified doctors", "board certified", "is the doctor good"],
+      "questions": ["Are your doctors experienced and qualified?", "Are your doctors certified?"],
+      "answer": "Yes, all our doctors are board-certified specialists with 10 to 20+ years of experience. A few examples:\n- Dr. Robert Martinez: 20+ years, MD, FACC, Interventional Cardiology\n- Dr. David Thompson: 20+ years, MD, FAAOS, Sports Medicine\n- Dr. Sarah Johnson: 15+ years, MD, FACC, PhD in Cardiovascular Medicine\nVideo consultation doctors are all verified and board-certified too.",
+      "link": "/doctors",
+      "linkLabel": "Meet the doctors",
+      "suggestions": ["Which doctors are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "doctor-languages",
+      "category": "doctors",
+      "keywords": ["doctors speak", "languages spoken", "language", "spanish doctor", "speak english", "multilingual", "in which language"],
+      "questions": ["What languages do your doctors speak?"],
+      "answer": "Most doctors speak English, and many are multilingual:\n- Dr. Sarah Johnson & Dr. Robert Martinez: English, Spanish\n- Dr. Michael Chen: English, Mandarin\n- Dr. Lisa Anderson & Dr. Emily Williams: English, French\n- Dr. Rachel Kim: English, Korean\n- Dr. Maria Rodriguez: English, Spanish\nYou can see languages on every doctor's profile.",
+      "link": "/doctors",
+      "linkLabel": "View doctor profiles",
+      "suggestions": ["Which doctors are available?", "Are the doctors experienced?"]
+    },
+    {
+      "id": "doctor-reviews",
+      "category": "doctors",
+      "keywords": ["ratings", "review", "reviews", "doctor rating", "patient reviews", "feedback about doctor", "rating"],
+      "questions": ["How can I see doctor reviews and ratings?"],
+      "answer": "Every doctor's profile displays a star rating and the number of verified patient reviews. For example, Dr. Rachel Kim has 4.9★ from 203 reviews and Dr. David Thompson has 4.9★ from 178 reviews. Ratings are based on real patient experiences to help you choose confidently.",
+      "link": "/doctors",
+      "linkLabel": "Check ratings",
+      "suggestions": ["Are the doctors experienced?", "How do I choose the right doctor?"]
+    },
+    {
+      "id": "services-list",
+      "category": "services",
+      "featured": true,
+      "keywords": ["what services", "list of services", "services offered", "which services", "our services", "what do you offer", "treatments", "what treatments", "types of care"],
+      "questions": ["What services do you offer?", "Which treatments are available?"],
+      "answer": "We offer a complete range of medical services:\n- Specialties: Cardiology, Neurology, Orthopedics, Dermatology, Pediatrics\n- Diagnostics & lab services\n- Preventive care: Annual check-ups, vaccinations, health screening\n- Check-up packages: General ($199), Premier ($499), Wellness Cardiac ($349), Vita Must ($179)\n- 24/7 Emergency care, urgent care and ambulance service\n- Video consultations and home sample collection\nBrowse the Services page for full details and prices.",
+      "link": "/services",
+      "linkLabel": "Explore all services",
+      "suggestions": ["How much do services cost?", "What is the cardiology service?", "What is an annual check-up?"]
+    },
+    {
+      "id": "service-cardiology",
+      "category": "services",
+      "keywords": ["cardiology", "heart", "cardiologist", "heart care", "cardiac", "heart specialist", "bp", "blood pressure", "heart attack"],
+      "questions": ["What is your cardiology service?", "Do you treat heart conditions?"],
+      "answer": "Cardiology at HealthCare provides comprehensive heart care including diagnostics, treatment and prevention of cardiovascular diseases. Consultations start from $200. Our expert cardiologists are Dr. Sarah Johnson and Dr. Robert Martinez, with the latest diagnostics such as ECG, echo and stress tests.",
+      "link": "/services/cardiology",
+      "linkLabel": "Cardiology details",
+      "suggestions": ["How do I book an appointment?", "Which cardiologists are available?"]
+    },
+    {
+      "id": "service-neurology",
+      "category": "services",
+      "keywords": ["neurology", "neurologist", "brain", "nerves", "migraine", "headache", "neurological"],
+      "questions": ["What is your neurology service?", "Do you treat neurological conditions?"],
+      "answer": "Our neurology department provides expert care for neurological disorders with advanced diagnostics and treatments, starting from $250. Our neurologists are Dr. Michael Chen and Dr. Lisa Anderson, who specialize in complex conditions including movement disorders.",
+      "link": "/services/neurology",
+      "linkLabel": "Neurology details",
+      "suggestions": ["Which neurologists are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-orthopedics",
+      "category": "services",
+      "keywords": ["orthopedics", "orthopedic", "bone", "joint", "sports injury", "orthopaedic", "knee", "spine", "fracture"],
+      "questions": ["What is your orthopedics service?", "Do you treat bone and joint issues?"],
+      "answer": "Our orthopedic team specializes in musculoskeletal conditions and sports injuries, starting from $180. Dr. David Thompson handles sports medicine and Dr. Maria Rodriguez focuses on joint replacement, giving you comprehensive bone and joint care.",
+      "link": "/services/orthopedics",
+      "linkLabel": "Orthopedics details",
+      "suggestions": ["Which orthopedic surgeons are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-pediatrics",
+      "category": "services",
+      "keywords": ["pediatrics", "pediatrician", "child", "children", "baby", "kids", "kid specialist", "child doctor"],
+      "questions": ["Do you have pediatric doctors?", "What pediatric services do you offer?"],
+      "answer": "Yes, we have dedicated pediatricians for your little ones: Dr. Emily Williams (10+ years, child healthcare) and Dr. James Wilson (15+ years, pediatric emergency). They provide complete care for children including check-ups, vaccinations and treatment for childhood illnesses.",
+      "link": "/doctors",
+      "linkLabel": "See pediatricians",
+      "suggestions": ["Can I book for my child?", "What vaccinations do you offer?"]
+    },
+    {
+      "id": "service-dermatology",
+      "category": "services",
+      "keywords": ["dermatology", "dermatologist", "skin", "skin care", "acne", "rash", "cosmetic", "skin treatment"],
+      "questions": ["Do you have skin specialists?", "What does your dermatology service cover?"],
+      "answer": "Yes. Our dermatologists Dr. Rachel Kim (cosmetic dermatology) and Dr. Thomas Brown (skin cancer specialist) treat acne, rashes, pigmentation, cosmetic concerns and more. Book a consultation to have your skin checked by an expert.",
+      "link": "/doctors",
+      "linkLabel": "View dermatologists",
+      "suggestions": ["Which doctors are available?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-diagnostics",
+      "category": "services",
+      "keywords": ["diagnostic", "lab test", "lab tests", "tests", "blood test", "x-ray", "scan", "diagnostics", "investigation"],
+      "questions": ["What diagnostic services do you offer?", "Can I get lab tests done here?"],
+      "answer": "We offer advanced diagnostic services including blood tests and 120+ lab tests, cardiac panels, hormone tests, microbiology and molecular/PCR testing. You can get these done in-clinic or at home via our home sample collection service, with NABL-accredited lab results in 24–48 hours.",
+      "link": "/home-collection",
+      "linkLabel": "Book a lab test",
+      "suggestions": ["What is home sample collection?", "When will I get my reports?"]
+    },
+    {
+      "id": "service-checkup",
+      "category": "services",
+      "featured": true,
+      "keywords": ["annual checkup", "annual check-up", "yearly checkup", "full body checkup", "checkup", "check-up", "health check", "health checkup", "body check", "check up", "annual physical"],
+      "questions": ["What is included in an annual check-up?", "Do you offer full body checkups?"],
+      "answer": "Our Annual Check-up costs $150 and includes a comprehensive yearly health assessment with preventive screening. For deeper coverage we also offer premium packages:\n- General Health Check-up: $199\n- Premier Health Screening: $499 (full-body, includes cancer markers, thyroid, stress test)\n- Wellness Cardiac Check-up: $349 (ECG, echo, stress test, lipid profile)\n- Vita Must: $179 (vitamin & mineral screening)",
+      "link": "/services/checkup",
+      "linkLabel": "View check-up packages",
+      "suggestions": ["What services do you offer?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-vaccination",
+      "category": "services",
+      "keywords": ["vaccination", "vaccine", "vaccinations", "immunization", "vaccinate", "covid vaccine", "flu shot", "vaccine for child"],
+      "questions": ["What vaccinations do you offer?", "Can I get vaccinated here?"],
+      "answer": "We provide a full range of vaccinations for both children and adults, starting from just $30. Our vaccination program covers routine immunizations and seasonal vaccines. Visit our Services page to learn more and schedule yours.",
+      "link": "/services/vaccination",
+      "linkLabel": "Vaccination details",
+      "suggestions": ["Do you have pediatric doctors?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-screening",
+      "category": "services",
+      "keywords": ["health screening", "screening", "early detection", "cancer screening", "screening program", "preventive"],
+      "questions": ["Do you offer health screening?", "What is your screening program?"],
+      "answer": "Yes, we offer early-detection health screening programs starting from $200. These programs help identify potential health issues early — including cancer markers and cardiac screening in our higher-tier packages. Prevention is the best treatment!",
+      "link": "/services/screening",
+      "linkLabel": "Screening details",
+      "suggestions": ["What is the premier health package?", "How do I book an appointment?"]
+    },
+    {
+      "id": "service-urgent",
+      "category": "services",
+      "keywords": ["urgent care", "urgent", "non emergency", "minor injury", "get seen quickly", "soon"],
+      "questions": ["Do you offer urgent care?", "What is your urgent care service?"],
+      "answer": "Urgent care is available for non-life-threatening medical conditions that still need prompt attention, starting from $100. If you're unsure whether it's urgent or an emergency, call us and we'll guide you. For life-threatening situations, always call 911.",
+      "link": "/services/urgent-care",
+      "linkLabel": "Urgent care details",
+      "suggestions": ["What is your emergency service?", "What should I do in an emergency?"]
+    },
+    {
+      "id": "emergency-911",
+      "category": "emergency",
+      "featured": true,
+      "keywords": ["emergency", "911", "call 911", "urgent help", "medical emergency", "life threatening", "critical", "emergency help", "heart attack", "stroke", "choking", "breathing", "bleeding"],
+      "questions": ["What should I do in a medical emergency?", "When should I call 911?"],
+      "answer": "If you're experiencing a medical emergency, call 911 immediately. Dial 911 or visit our 24/7 emergency department as soon as possible for:\n- Chest pain, pressure or difficulty breathing\n- Severe bleeding or deep injuries\n- Loss of consciousness or fainting\n- Sudden weakness, numbness or stroke symptoms\n- Severe allergic reactions or trouble swallowing\n- Seizures, choking or poisoning\nOur ER is open 24/7/365 and walk-ins are always accepted.",
+      "link": "/emergency",
+      "linkLabel": "Emergency page",
+      "suggestions": ["What emergency services do you have?", "How do I get the ambulance?", "Where is your emergency department?"]
+    },
+    {
+      "id": "emergency-services",
+      "category": "emergency",
+      "keywords": ["emergency services", "er", "emergency room", "trauma", "critical care", "emergency care", "24 7 emergency", "24x7", "round the clock"],
+      "questions": ["What emergency services do you offer?", "Is emergency care available 24/7?"],
+      "answer": "Our 24/7 emergency department includes:\n- Board-certified ER physicians and trauma specialists around the clock\n- State-of-the-art trauma bays, ICU and emergency surgery suites\n- Emergency admission with dedicated ER beds\n- In-house blood bank with all major groups stocked\n- On-call specialists (cardiology, neurology, surgery) who reach the ER within minutes\n- Rapid ambulance service with trained paramedics",
+      "link": "/emergency",
+      "linkLabel": "Explore emergency care",
+      "suggestions": ["What should I do in an emergency?", "Where is your emergency department?"]
+    },
+    {
+      "id": "ambulance",
+      "category": "emergency",
+      "keywords": ["ambulance", "ambulance service", "call ambulance", "medical transport", "emergency transport", "paramedic"],
+      "questions": ["How do I get an ambulance?", "Do you have ambulance service?"],
+      "answer": "Yes, our ambulance service provides rapid emergency medical transportation with trained paramedics, advanced life support and GPS dispatch, available 24/7. Call the ambulance line at +1 (234) 567-899 for pickup. For life-threatening emergencies, dial 911 first.",
+      "link": "/emergency",
+      "linkLabel": "Emergency contacts",
+      "suggestions": ["What should I do in an emergency?", "What is the emergency number?"]
+    },
+    {
+      "id": "emergency-locations",
+      "category": "emergency",
+      "keywords": ["emergency location", "emergency department address", "erlocation", "where is the er", "emergency room location", "nearest emergency"],
+      "questions": ["Where is your emergency department?", "Which emergency location is nearest?"],
+      "answer": "We have three emergency departments:\n- Main Campus ER — 123 Healthcare Ave (Phone: +1 (234) 567-890)\n- North Clinic ER — 456 Wellness Blvd (Phone: +1 (234) 567-891)\n- South Clinic ER — 789 Care Lane (Phone: +1 (234) 567-892)\nOur EMS team will direct you to the closest facility based on your location.",
+      "link": "/emergency",
+      "linkLabel": "See all ER locations",
+      "suggestions": ["What should I do in an emergency?", "What is the emergency number?"]
+    },
+    {
+      "id": "emergency-number",
+      "category": "emergency",
+      "keywords": ["emergency number", "emergency phone", "hotline", "emergency contact", "phone number", "contact number", "telephone", "reception number"],
+      "questions": ["What is your emergency contact number?", "What number should I call?"],
+      "answer": "Here are our numbers:\n- Emergency: 911 (24/7)\n- Ambulance: +1 (234) 567-899\n- Reception: +1 (234) 567-890\nAll lines are available around the clock. In any life-threatening situation, call 911 first.",
+      "link": "/contact",
+      "linkLabel": "Contact page",
+      "suggestions": ["How can I contact you?", "Where are you located?"]
+    },
+    {
+      "id": "video-consultation",
+      "category": "video",
+      "featured": true,
+      "keywords": ["video consultation", "video consult", "online doctor", "online consultation", "telemedicine", "teleconsult", "hi hme", "appointment online", "virtual visit", "online visit", "telehealth"],
+      "questions": ["How does video consultation work?", "Can I see a doctor online?"],
+      "answer": "Yes! Video consultation lets you see a doctor from anywhere:\n1. Choose your verified doctor.\n2. Pick a convenient time slot (including evenings and weekends).\n3. Join a secure HD video call with one click.\n4. Get your e-prescription and follow-up plan instantly afterwards.\nIt's private, end-to-end encrypted, and works on any device.",
+      "link": "/video-consultation",
+      "linkLabel": "Book a video consult",
+      "suggestions": ["Which doctors are on video?", "Is video consultation secure?", "Do I get a prescription?"]
+    },
+    {
+      "id": "video-specialties",
+      "category": "video",
+      "keywords": ["video doctors", "online specialties", "video consultation for", "video consult doctor", "telemedicine specialties", "which doctors online"],
+      "questions": ["Which specialties are available for video consultation?"],
+      "answer": "Video consultations are available for:\n- General Physician\n- Pediatrics\n- Cardiology\n- Dermatology\n- Psychiatry\n- ENT\nAll doctors are board-certified with verified credentials and real patient reviews.",
+      "link": "/video-consultation",
+      "linkLabel": "See online doctors",
+      "suggestions": ["How does video consultation work?", "Do I get a prescription?"]
+    },
+    {
+      "id": "video-requirements",
+      "category": "video",
+      "keywords": ["requirements", "equipment", "what do i need", "camera", "app needed", "download app", "video needs", "device"],
+      "questions": ["What do I need for a video consultation?", "Do I need to download an app?"],
+      "answer": "You only need a stable internet connection and a device with a camera and microphone — phone, tablet or laptop. Everything runs in your browser, optimized for any screen. No app download is required.",
+      "link": "/video-consultation",
+      "linkLabel": "Start a video visit",
+      "suggestions": ["How does video consultation work?", "Is video consultation secure?"]
+    },
+    {
+      "id": "video-security",
+      "category": "video",
+      "keywords": ["secure", "private", "confidential", "encrypted", "video security", "safe", "is it private", "privacy"],
+      "questions": ["Is the video consultation secured and private?"],
+      "answer": "Absolutely. Every video session is end-to-end encrypted, so your consultation stays completely confidential. We follow strict medical privacy standards, verify every doctor, and never share your session or health data.",
+      "link": "/video-consultation",
+      "linkLabel": "Video consultation page",
+      "suggestions": ["How does video consultation work?", "Do I get a prescription?"]
+    },
+    {
+      "id": "video-prescription",
+      "category": "video",
+      "keywords": ["prescription", "e prescription", "electronic prescription", "medical note", "follow up plan", "medicine after consult"],
+      "questions": ["Do I get a prescription after a video consultation?"],
+      "answer": "Yes. You receive a digital prescription and medical notes instantly after your consultation. You'll also get a clear follow-up plan, so you always know your next steps. Everything is saved to your patient record.",
+      "link": "/video-consultation",
+      "linkLabel": "Book a consultation",
+      "suggestions": ["How does video consultation work?", "What can I do in the patient portal?"]
+    },
+    {
+      "id": "video-cost",
+      "category": "video",
+      "keywords": ["video consultation cost", "video consultation price", "online consult fee", "how much for video", "telemedicine cost"],
+      "questions": ["How much does a video consultation cost?"],
+      "answer": "Video consultation pricing is transparent and shown before you book. You can pay securely by card, UPI or insurance — with no hidden fees. Rescheduling or cancelling takes a single tap.",
+      "link": "/video-consultation",
+      "linkLabel": "Check video prices",
+      "suggestions": ["How does video consultation work?", "How do I pay?"]
+    },
+    {
+      "id": "home-collection",
+      "category": "home-collection",
+      "featured": true,
+      "keywords": ["home collection", "home sample collection", "blood test at home", "lab test at home", "doorstep", "home visit test", "home pickup sample", "sample collection", "home blood test"],
+      "questions": ["What is home sample collection?", "Can I get a blood test done at home?"],
+      "answer": "Yes! Our home sample collection brings diagnostic testing to your doorstep:\n1. Book a slot online or over the phone.\n2. A certified phlebotomist visits your home with sterile, single-use equipment.\n3. Samples are collected hygienically under strict protocols.\n4. Analysis happens in our NABL-accredited lab.\n5. Accurate digital reports are delivered to your phone and email in 24–48 hours.\nService includes 120+ blood tests, hormone tests, PCR and more.",
+      "link": "/home-collection",
+      "linkLabel": "Book home collection",
+      "suggestions": ["What tests are available at home?", "When will I get my reports?", "Is the technician certified?"]
+    },
+    {
+      "id": "home-collection-tests",
+      "category": "home-collection",
+      "keywords": ["which tests at home", "home tests available", "types of tests", "test list", "home blood tests", "which tests can be done at home"],
+      "questions": ["Which tests can I get done at home?"],
+      "answer": "We offer a wide range of home tests:\n- Blood Tests (120+ types)\n- Microbiology\n- Urine & Stool\n- Cardiac Panel\n- Hormone Tests\n- Molecular / PCR\nChoose your test at booking, and a certified phlebotomist comes to you.",
+      "link": "/home-collection",
+      "linkLabel": "See all home tests",
+      "suggestions": ["What is home sample collection?", "When will I get my reports?"]
+    },
+    {
+      "id": "home-collection-reports",
+      "category": "home-collection",
+      "keywords": ["reports", "when do i get reports", "report time", "result", "how long for results", "result delivery", "lab report"],
+      "questions": ["When will I get my test reports?", "How long do results take?"],
+      "answer": "Most reports are delivered within 24–48 hours directly to your phone and email as secure digital PDFs. For complex results, you'll also get a quick free teleconsultation with a doctor to review your reports and decide next steps.",
+      "link": "/home-collection",
+      "linkLabel": "Book home collection",
+      "suggestions": ["What tests are available at home?", "What is home sample collection?"]
+    },
+    {
+      "id": "home-collection-certified",
+      "category": "home-collection",
+      "keywords": ["phlebotomist", "certified", "is the technician qualified", "trained professional", "sample collector", "safe", "hygienic"],
+      "questions": ["Are the sample collectors certified?", "Is home collection safe?"],
+      "answer": "Yes. Samples are collected by experienced, certified phlebotomists following strict world-class safety protocols with sterile, single-use equipment. All samples are processed in our NABL-accredited laboratories to guarantee accuracy and hygiene.",
+      "link": "/home-collection",
+      "linkLabel": "Home collection details",
+      "suggestions": ["What is home sample collection?", "When will I get my reports?"]
+    },
+    {
+      "id": "patient-portal",
+      "category": "portal",
+      "featured": true,
+      "keywords": ["patient portal", "portal", "my account", "medical records", "view records", "history", "my appointments", "dashboard", "login", "sign in", "log in"],
+      "questions": ["What can I do in the patient portal?", "How do I log in to the patient portal?"],
+      "answer": "After creating an account and logging in, the patient portal lets you:\n- View your dashboard with key health stats\n- Track all your appointments\n- Access your medical records\n- Review your payment history\nTo log in, click 'Sign In' in the navigation and use your email and password.",
+      "link": "/portal",
+      "linkLabel": "Open patient portal",
+      "suggestions": ["How do I create an account?", "How do I view my medical records?"]
+    },
+    {
+      "id": "create-account",
+      "category": "portal",
+      "keywords": ["create account", "sign up", "register", "new account", "how do i sign up", "register account", "make an account"],
+      "questions": ["How do I create an account?", "How do I sign up?"],
+      "answer": "Creating an account is free and takes less than a minute:\n1. Click 'Sign In' in the top navigation.\n2. Choose 'Sign up'.\n3. Enter your name, email and a password.\n4. You're in! You can now book faster and manage everything from your portal.",
+      "link": "/auth",
+      "linkLabel": "Sign up now",
+      "suggestions": ["What can I do in the patient portal?", "Do I need an account to book?"]
+    },
+    {
+      "id": "forgot-password",
+      "category": "portal",
+      "keywords": ["forgot password", "reset password", "forget password", "password reset", "can't login", "can't log in", "login problem"],
+      "questions": ["I forgot my password. What should I do?", "How do I reset my password?"],
+      "answer": "On the Sign In page, use the 'Forgot password' link to reset your password. If you're still unable to log in, please contact our support team and we'll get you back into your account as quickly as possible.",
+      "link": "/auth",
+      "linkLabel": "Go to sign in",
+      "suggestions": ["How do I create an account?", "How can I contact you?"]
+    },
+    {
+      "id": "medical-records",
+      "category": "portal",
+      "keywords": ["medical records", "my reports", "view reports", "download reports", "medical history", "health records"],
+      "questions": ["How do I view my medical records?", "Can I download my reports?"],
+      "answer": "Once logged in, open the patient portal and select the 'Medical Records' tab. There you'll find all your records and reports. Digital reports from home collection are also delivered to your email and phone within 24–48 hours.",
+      "link": "/portal",
+      "linkLabel": "View records",
+      "suggestions": ["What can I do in the patient portal?", "How do I log in?"]
+    },
+    {
+      "id": "payment-method",
+      "category": "payment",
+      "featured": true,
+      "keywords": ["payment", "pay", "how do i pay", "payment options", "pay online", "card payment", "upi", "paypal", "pay bill", "checkout", "purchase"],
+      "questions": ["How can I pay?", "What payment methods do you accept?"],
+      "answer": "We offer secure and flexible payment options:\n- Credit / debit card\n- UPI\n- Health insurance\nAll payments are processed securely with transparent, upfront pricing — no hidden fees. When you're ready, just proceed through the normal booking or cart checkout flow.",
+      "link": "/contact",
+      "linkLabel": "Contact billing",
+      "suggestions": ["Is payment secure?", "Are there any hidden fees?", "Do you accept insurance?"]
+    },
+    {
+      "id": "payment-secure",
+      "category": "payment",
+      "keywords": ["is payment secure", "safe to pay", "secure payment", "payment security", "is it safe", "private payment"],
+      "questions": ["Is my payment secure?", "Is it safe to pay online?"],
+      "answer": "Yes. Payments are fully encrypted and processed through secure, PCI-compliant gateways. We never store your card details, and you'll see transparent pricing at every step with no hidden fees.",
+      "link": "/contact",
+      "linkLabel": "Contact us",
+      "suggestions": ["How do I pay?", "Do you accept insurance?"]
+    },
+    {
+      "id": "cart",
+      "category": "payment",
+      "keywords": ["cart", "shopping cart", "my cart", "basket", "add to cart", "checkout cart", "buy package"],
+      "questions": ["How does the cart work?", "Can I add services to a cart?"],
+      "answer": "You can add check-up packages or services to your cart and complete them with a single secure checkout. Your cart is saved in your browser, and at checkout you'll see the full total before you pay — then choose card, UPI or insurance.",
+      "link": "/cart",
+      "linkLabel": "Open your cart",
+      "suggestions": ["How do I pay?", "What services are available?"]
+    },
+    {
+      "id": "refunds",
+      "category": "payment",
+      "keywords": ["refund", "refunds", "money back", "return payment", "cancel refund", "reimbursement"],
+      "questions": ["Do you offer refunds?", "Can I get my money back?"],
+      "answer": "We keep our billing transparent. For refunds or no-show adjustments, please contact our billing team with your payment details and we'll resolve it promptly. Video consultations can be rescheduled or cancelled with a single tap.",
+      "link": "/contact",
+      "linkLabel": "Contact billing",
+      "suggestions": ["How do I pay?", "Can I reschedule or cancel?"]
+    },
+    {
+      "id": "hidden-fees",
+      "category": "payment",
+      "keywords": ["hidden fees", "extra charges", "extra cost", "additional fees", "surprise charges", "transparent pricing"],
+      "questions": ["Are there any hidden fees?", "Is the pricing transparent?"],
+      "answer": "No hidden fees, ever. Every service, package and consultation shows its price upfront — for example, cardiology from $200 or the Premier package at $499. You'll always see the exact cost before you confirm.",
+      "link": "/services",
+      "linkLabel": "View transparent prices",
+      "suggestions": ["How much does a consultation cost?", "How do I pay?"]
+    },
+    {
+      "id": "locations",
+      "category": "contact",
+      "featured": true,
+      "keywords": ["location", "where are you", "address", "main campus", "north clinic", "south clinic", "or jossman", "find us", "directions", "branches"],
+      "questions": ["Where are you located?", "What are your addresses?"],
+      "answer": "We have three convenient locations:\n- Main Campus — 123 Healthcare Ave, Medical City\n- North Clinic — 456 Wellness Blvd, Garden Town\n- South Clinic — 789 Care Lane, River District\nAll three locations have an emergency department open 24/7.",
+      "link": "/contact",
+      "linkLabel": "See all locations",
+      "suggestions": ["What are your working hours?", "How can I contact you?"]
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "keywords": ["contact", "contact us", "how do i contact", "reach you", "talk to someone", "speak to human", "get in touch", "support", "help desk", "human agent", "real person"],
+      "questions": ["How can I contact you?", "Can I talk to a real person?"],
+      "answer": "Absolutely! Here's how to reach us:\n- Phone: +1 (234) 567-890 (Reception)\n- Email: contact@healthcare.com\n- Bookings: bookings@healthcare.com\n- Feedback: feedback@healthcare.com\n- Or visit the Contact page and send us a message — we respond quickly.",
+      "link": "/contact",
+      "linkLabel": "Contact page",
+      "suggestions": ["Where are you located?", "What are your working hours?", "How do I give feedback?"]
+    },
+    {
+      "id": "email-contact",
+      "category": "contact",
+      "keywords": ["email", "email address", "mail", "send email", "email us"],
+      "questions": ["What is your email address?", "How do I email you?"],
+      "answer": "You can reach us at these emails:\n- contact@healthcare.com — general inquiries\n- bookings@healthcare.com — appointments and bookings\n- feedback@healthcare.com — feedback and testimonials\nAlternatively, use the contact form on our Contact page.",
+      "link": "/contact",
+      "linkLabel": "Go to contact page",
+      "suggestions": ["How can I contact you?", "Where are you located?"]
+    },
+    {
+      "id": "feedback",
+      "category": "feedback",
+      "keywords": ["feedback", "review us", "testimonial", "give feedback", "complaint", "suggestion", "how was my experience", "share experience", "rate us"],
+      "questions": ["How do I give feedback?", "How can I share my experience?"],
+      "answer": "We'd love to hear from you! Visit our Feedback page to share your experience or suggestions. You can also email us at feedback@healthcare.com. Your feedback helps us improve our care every single day.",
+      "link": "/feedback",
+      "linkLabel": "Give feedback",
+      "suggestions": ["How can I contact you?", "What services do you offer?"]
+    },
+    {
+      "id": "blog",
+      "category": "general",
+      "keywords": ["blog", "articles", "health tips", "news", "latest posts", "read more", "wellness tips"],
+      "questions": ["Do you have a health blog?", "Where can I read health articles?"],
+      "answer": "Yes, we have a Blog section filled with useful health articles and wellness tips. You'll find it through the main navigation. Explore topics like prevention, nutrition, exercise and living healthier.",
+      "link": "/blog",
+      "linkLabel": "Read our blog",
+      "suggestions": ["What services do you offer?", "Tell me about your hospital"]
+    },
+    {
+      "id": "emergency-page-nav",
+      "category": "navigation",
+      "keywords": ["where is the emergency page", "emergency page", "how to open appointment page", "how to navigate", "navigation", "menu", "find the doctors page", "where can i find"],
+      "questions": ["How do I navigate the website?", "Where can I find everything?"],
+      "answer": "Use the main menu at the top of the page to navigate:\n- Home, About, Services, Doctors, Blog\n- Emergency (24/7)\n- Video Consultation\n- Home Collection\n- Patient Portal\n- Contact\nYou can also use the assistant here to jump to any page — just ask!",
+      "link": "/",
+      "linkLabel": "Go to homepage",
+      "suggestions": ["What services do you offer?", "Which doctors are available?"]
+    },
+    {
+      "id": "chatbot-help",
+      "category": "navigation",
+      "keywords": ["how does this work", "how do you work", "what can you do", "what can you help with", "help me", "assistant", "help", "guide me"],
+      "questions": ["What can this assistant help me with?", "How do I use the chat assistant?"],
+      "answer": "I can answer questions about anything on this website — booking appointments, doctor availability, services and prices, emergency care, video consultations, home sample collection, payments, locations and more. Just type your question above or tap one of the suggested topics.",
+      "link": "/",
+      "linkLabel": "Return to homepage",
+      "suggestions": ["How do I book an appointment?", "What are the working hours?", "What services do you offer?"]
+    },
+    {
+      "id": "admin-dashboard",
+      "category": "general",
+      "keywords": ["admin", "admin login", "staff login", "admin dashboard", "doctor login", "employee login"],
+      "questions": ["What is the admin dashboard?", "Is there a staff login?"],
+      "answer": "The admin dashboard is our internal system for hospital staff to manage appointments, patients and records. It's restricted to authorized personnel only. If you're a patient, use the patient portal instead for your own appointments and records.",
+      "link": "/admin/login",
+      "linkLabel": "Admin login",
+      "suggestions": ["What can I do in the patient portal?", "How do I give feedback?"]
+    },
+    {
+      "id": "feedback-thanks",
+      "category": "feedback",
+      "keywords": ["thank you", "thanks", "great service", "appreciated", "excellent", "good job", "nice"],
+      "questions": ["You're so helpful!", "Thank you!"],
+      "answer": "You're very welcome! We're glad to help. If you have any other questions about our services, appointments, doctors, video consultations or home collection, just ask anytime. Want me to help you book something?",
+      "suggestions": ["How do I book an appointment?", "What services do you offer?", "How can I contact you?"]
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Heart,
@@ -19,6 +18,7 @@ const quickLinks = [
   { label: 'Our Doctors', to: '/doctors' },
   { label: 'Our Services', to: '/services' },
   { label: 'Patient Portal', to: '/portal' },
+  { label: 'FAQs', to: '/faq' },
   { label: 'Contact Us', to: '/contact' },
   { label: 'Emergency Care', to: '/emergency' },
 ];
@@ -177,15 +177,15 @@ export const Footer = () => {
           <div className="flex flex-col items-center justify-between gap-3 text-sm text-slate-500 sm:flex-row">
             <p>© {new Date().getFullYear()} HealthCare. All rights reserved.</p>
             <div className="flex items-center gap-6">
-              <a href="#" className="transition-colors hover:text-white">
+              <Link to="/privacy-policy" className="transition-colors hover:text-white">
                 Privacy Policy
-              </a>
-              <a href="#" className="transition-colors hover:text-white">
+              </Link>
+              <Link to="/terms" className="transition-colors hover:text-white">
                 Terms of Service
-              </a>
-              <a href="#" className="transition-colors hover:text-white">
+              </Link>
+              <Link to="/faq" className="transition-colors hover:text-white">
                 FAQs
-              </a>
+              </Link>
             </div>
           </div>
         </div>

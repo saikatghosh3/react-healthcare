@@ -9,7 +9,6 @@ import {
   Ambulance,
   LogOut,
   ChevronDown,
-  ShieldCheck,
 } from 'lucide-react';
 
 const navItems = [
@@ -29,7 +28,6 @@ export const MainNav = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isAuth = localStorage.getItem('isAuthenticated') === 'true';
-  const isAdmin = localStorage.getItem('isAdminAuthenticated') === 'true';
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -50,14 +48,9 @@ export const MainNav = () => {
   }, []);
 
   const handleLogout = () => {
-    if (isAdmin) {
-      localStorage.removeItem('isAdminAuthenticated');
-      navigate('/admin/login');
-    } else {
-      localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('currentUser');
-      navigate('/auth');
-    }
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('currentUser');
+    navigate('/auth');
   };
 
   const navLinkClass =
@@ -116,24 +109,6 @@ export const MainNav = () => {
                 )}
               </NavLink>
             ))}
-            {isAdmin && (
-              <NavLink to="/admin/dashboard" className={navLinkClass}>
-                {({ isActive }) => (
-                  <>
-                    <span
-                      className={`relative z-10 transition-colors duration-300 ${
-                        isActive
-                          ? 'font-bold text-blue-700'
-                          : 'text-slate-600 group-hover:text-blue-600'
-                      }`}
-                    >
-                      Admin Panel
-                    </span>
-                    {renderUnderline(isActive)}
-                  </>
-                )}
-              </NavLink>
-            )}
           </div>
 
           <div className="hidden items-center gap-3 xl:flex">
@@ -187,7 +162,7 @@ export const MainNav = () => {
               </AnimatePresence>
             </div>
 
-            {isAuth || isAdmin ? (
+            {isAuth && (
               <button
                 onClick={handleLogout}
                 className="inline-flex items-center gap-2 rounded-full border border-red-200 px-5 py-2.5 text-sm font-bold text-red-600 transition-all hover:bg-red-50"
@@ -195,14 +170,6 @@ export const MainNav = () => {
                 <LogOut className="h-4 w-4" />
                 Logout
               </button>
-            ) : (
-              <Link
-                to="/auth"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-card transition-all hover:bg-blue-700 hover:shadow-lift"
-              >
-                <ShieldCheck className="h-4 w-4" />
-                Login
-              </Link>
             )}
           </div>
 
@@ -250,27 +217,6 @@ export const MainNav = () => {
                     </NavLink>
                   </motion.div>
                 ))}
-                {isAdmin && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.04 * navItems.length }}
-                  >
-                    <NavLink
-                      to="/admin/dashboard"
-                      onClick={() => setIsMenuOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-center justify-between rounded-xl border-l-4 px-4 py-3 text-[0.95rem] font-semibold transition-colors ${
-                          isActive
-                            ? 'border-blue-600 bg-gradient-to-r from-blue-50 to-transparent text-blue-700'
-                            : 'border-transparent text-slate-700 hover:bg-slate-50'
-                        }`
-                      }
-                    >
-                      Admin Panel
-                    </NavLink>
-                  </motion.div>
-                )}
               </div>
 
               <div className="mt-4 border-t border-slate-100 pt-4">
@@ -298,7 +244,7 @@ export const MainNav = () => {
                   </div>
                 </div>
 
-                {isAuth || isAdmin ? (
+                {isAuth && (
                   <button
                     onClick={handleLogout}
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-3 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-200"
@@ -306,15 +252,6 @@ export const MainNav = () => {
                     <LogOut className="h-4 w-4" />
                     Logout
                   </button>
-                ) : (
-                  <Link
-                    to="/auth"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-card transition-all hover:bg-blue-700"
-                  >
-                    <ShieldCheck className="h-4 w-4" />
-                    Login / Register
-                  </Link>
                 )}
               </div>
             </div>

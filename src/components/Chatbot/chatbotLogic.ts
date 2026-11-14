@@ -1,118 +1,160 @@
-// interface Response {
-//   [key: string]: string[];
-// }
+import data from '../../data/chatbotData.json';
 
-// const responses: Response = {
-//   greeting: [
-//     "Hello! How can I assist you with your healthcare needs today?",
-//     "Hi there! What can I help you with?",
-//     "Welcome! How may I help you today?"
-//   ],
-//   appointment: [
-//     "I can help you schedule an appointment. Would you like to see our available doctors?",
-//     "Sure! You can book an appointment through our portal. Would you like me to guide you?",
-//     "I'll help you book an appointment. Do you have a specific doctor in mind?"
-//   ],
-//   services: [
-//     "We offer a wide range of medical services including primary care, specialists, and emergency care. What specific service are you looking for?",
-//     "Our services include consultations, diagnostics, and treatments. Would you like more details about any specific service?",
-//     "We provide comprehensive healthcare services. Which area are you interested in learning more about?"
-//   ],
-//   emergency: [
-//     "If this is a medical emergency, please call 911 immediately. Our emergency department is open 24/7.",
-//     "For emergencies, please call 911 or visit our emergency department immediately.",
-//     "Please call 911 for immediate medical attention if you're experiencing an emergency."
-//   ],
-//   default: [
-//     "I'm here to help with your healthcare needs. Could you please provide more details?",
-//     "I want to assist you better. Could you elaborate on your question?",
-//     "I'm not sure I understand. Could you rephrase your question?"
-//   ]
-// };
-
-// const getRandomResponse = (responses: string[]): string => {
-//   const index = Math.floor(Math.random() * responses.length);
-//   return responses[index];
-// };
-
-// const findMatchingCategory = (input: string): string => {
-//   const lowercaseInput = input.toLowerCase();
-  
-//   if (lowercaseInput.match(/\b(hi|hello|hey|greetings)\b/)) {
-//     return 'greeting';
-//   }
-//   if (lowercaseInput.match(/\b(appointment|schedule|book|visit)\b/)) {
-//     return 'appointment';
-//   }
-//   if (lowercaseInput.match(/\b(service|treatment|care|checkup)\b/)) {
-//     return 'services';
-//   }
-//   if (lowercaseInput.match(/\b(emergency|urgent|immediate|critical)\b/)) {
-//     return 'emergency';
-//   }
-//   return 'default';
-// };
-
-// export const getBotResponse = async (input: string): Promise<string> => {
-//   const category = findMatchingCategory(input);
-//   return getRandomResponse(responses[category]);
-// };
-
-interface Response {
-  [key: string]: string[];
+export interface FaqItem {
+  id: string;
+  category: string;
+  featured: boolean;
+  keywords: string[];
+  questions: string[];
+  answer: string;
+  link?: string;
+  linkLabel?: string;
+  suggestions?: string[];
 }
 
-const responses: Response = {
-  greeting: [
-    "Hello! How may I assist you with your healthcare needs today?",
-    "Good day! How can I support you with your medical inquiries?",
-    "Welcome! Please let me know how I can help you."
-  ],
-  appointment: [
-    "I’d be happy to assist you with scheduling an appointment. Would you like to view available doctors and time slots?",
-    "Certainly! You can book an appointment through our online portal. Would you like me to guide you through the process?",
-    "I can help you arrange an appointment. Do you have a preferred doctor or department in mind?"
-  ],
-  services: [
-    "We offer a wide range of healthcare services, including general consultations, specialized treatments, and diagnostic services. Could you specify the type of service you require?",
-    "Our medical services cover everything from preventive care to specialized treatments. Would you like more information on a specific department?",
-    "We provide comprehensive healthcare solutions, including wellness checkups, diagnostic procedures, and emergency care. What would you like to learn more about?"
-  ],
-  emergency: [
-    "If you are experiencing a medical emergency, please call 911 immediately. Our emergency department is available 24/7.",
-    "For urgent medical assistance, please contact 911 or visit the nearest emergency facility as soon as possible.",
-    "In case of a critical emergency, please seek immediate medical attention by dialing 911 or heading to the nearest emergency room."
-  ],
-  default: [
-    "I am here to assist with your healthcare-related inquiries. Could you provide more details so I can better assist you?",
-    "I’d love to help! Could you clarify your question so I can provide the most relevant information?",
-    "I apologize, but I need more details to understand your request. Could you please rephrase or specify your concern?"
-  ]
+export interface BotReply {
+  text: string;
+  suggestions?: string[];
+  link?: string;
+  linkLabel?: string;
+}
+
+interface ChatbotData {
+  meta: {
+    botName: string;
+    siteName: string;
+    welcome: string;
+    greetings: string[];
+    fallback: string;
+    welcomeSuggestions: string[];
+  };
+  faqs: FaqItem[];
+}
+
+const chatbotData = data as ChatbotData;
+
+const pickRandom = <T,>(arr: T[]): T =>
+  arr[Math.floor(Math.random() * arr.length)];
+
+const pickRandomSuggestions = <T,>(arr: T[], count: number): T[] => {
+  if (arr.length <= count) return [...arr];
+  return [...arr].sort(() => Math.random() - 0.5).slice(0, count);
 };
 
-const getRandomResponse = (responses: string[]): string => {
-  return responses[Math.floor(Math.random() * responses.length)];
+const normalize = (input: string): string =>
+  input
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const isWordMatch = (text: string, word: string): boolean => {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`).test(text);
 };
 
-const findMatchingCategory = (input: string): string => {
-  const lowercaseInput = input.toLowerCase();
+const scoreFaq = (faq: FaqItem, normalizedInput: string): number => {
+  let score = 0;
 
-  if (/\b(hi|hello|hey|greetings|good\s(morning|afternoon|evening))\b/.test(lowercaseInput)) {
-    return 'greeting';
+  for (const keyword of faq.keywords) {
+    const kw = keyword.toLowerCase().trim();
+    if (!kw) continue;
+
+    if (kw.includes(' ')) {
+      if (normalizedInput.includes(kw)) {
+        score += kw.split(/\s+/).length * 2;
+      }
+    } else if (isWordMatch(normalizedInput, kw)) {
+      score += 2;
+    }
   }
-  if (/\b(appointment|schedule|book|consultation|visit)\b/.test(lowercaseInput)) {
-    return 'appointment';
+
+  for (const question of faq.questions) {
+    const q = question.toLowerCase().replace(/[^\w\s-]/g, ' ').trim();
+    if (!q) continue;
+    if (normalizedInput.includes(q)) {
+      score += 5;
+    }
   }
-  if (/\b(service|treatment|care|specialist|checkup|diagnostic)\b/.test(lowercaseInput)) {
-    return 'services';
-  }
-  if (/\b(emergency|urgent|immediate|critical|life-threatening)\b/.test(lowercaseInput)) {
-    return 'emergency';
-  }
-  return 'default';
+
+  return score;
 };
 
-export const getBotResponse = async (input: string): Promise<string> => {
-  const category = findMatchingCategory(input);
-  return getRandomResponse(responses[category]);
+const findBestMatch = (input: string): FaqItem | null => {
+  const normalizedInput = normalize(input);
+  if (!normalizedInput) return null;
+
+  let bestMatch: FaqItem | null = null;
+  let bestScore = 0;
+
+  for (const faq of chatbotData.faqs) {
+    const score = scoreFaq(faq, normalizedInput);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = faq;
+    }
+  }
+
+  return bestScore > 0 ? bestMatch : null;
+};
+
+const buildReply = (faq: FaqItem): BotReply => {
+  const reply: BotReply = { text: faq.answer };
+
+  if (faq.suggestions?.length) {
+    reply.suggestions = faq.suggestions;
+  }
+  if (faq.link) {
+    reply.link = faq.link;
+    reply.linkLabel = faq.linkLabel;
+  }
+
+  return reply;
+};
+
+export const getWelcomeMessage = (): BotReply => {
+  return {
+    text: chatbotData.meta.welcome,
+    suggestions: chatbotData.meta.welcomeSuggestions,
+  };
+};
+
+export const getBotResponse = (input: string): BotReply => {
+  const normalizedInput = normalize(input);
+  const plainText = normalizedInput.replace(/[^a-z\s]/g, '').trim();
+
+  const isPlainGreeting =
+    /^(hi|hi+|hello+|hey|hii|yo|greetings|good\s(morning|afternoon|evening))[!.]*$/i.test(
+      plainText
+    );
+
+  if (isPlainGreeting) {
+    return {
+      text: pickRandom(chatbotData.meta.greetings),
+      suggestions: pickRandomSuggestions(chatbotData.meta.welcomeSuggestions, 3),
+    };
+  }
+
+  if (/\b(thanks|thank you|thank|thx|ty)\b/.test(normalizedInput)) {
+    const thankFaq = chatbotData.faqs.find((f) => f.id === 'feedback-thanks');
+    if (thankFaq) return buildReply(thankFaq);
+  }
+
+  if (/\b(bye|goodbye|see you|ciao|tata)\b/.test(normalizedInput)) {
+    return {
+      text: 'Goodbye! Take care of your health. If you need anything else, I am always here for you. 😊',
+      suggestions: ['How do I book an appointment?', 'What are the working hours?'],
+    };
+  }
+
+  const bestMatch = findBestMatch(input);
+
+  if (bestMatch) {
+    return buildReply(bestMatch);
+  }
+
+  return {
+    text: chatbotData.meta.fallback,
+    suggestions: pickRandomSuggestions(chatbotData.meta.welcomeSuggestions, 3),
+  };
 };

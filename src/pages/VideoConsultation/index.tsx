@@ -66,7 +66,7 @@ export const VideoConsultation = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-blue-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-300">
               <Video className="h-4 w-4" /> Online Doctor Consultations
             </span>
-            <h1 className="mt-6 text-balance text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-5 text-balance text-3xl font-extrabold leading-snug text-white sm:text-4xl lg:text-5xl">
               See a Doctor From <span className="bg-gradient-to-r from-blue-300 to-indigo-300 bg-clip-text text-transparent">Anywhere, Anytime</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-slate-300">
