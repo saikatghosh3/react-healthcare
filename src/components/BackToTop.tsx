@@ -39,7 +39,7 @@ export const BackToTop = () => {
           onClick={scrollTop}
           aria-label="Scroll back to top"
           title="Back to top"
-          className="group fixed bottom-24 left-6 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lift transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:bottom-6"
+          className="group fixed bottom-36 left-6 z-40 flex h-16 w-16 flex-col items-center justify-center rounded-full border border-white/80 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 text-white shadow-[0_8px_24px_rgba(37,99,235,0.5)] ring-4 ring-white/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.65)] focus:outline-none focus:ring-4 focus:ring-cyan-200 sm:bottom-6"
         >
           <svg
             className="absolute inset-0 h-full w-full -rotate-90"
@@ -51,7 +51,7 @@ export const BackToTop = () => {
               cy="24"
               r={RADIUS}
               fill="none"
-              stroke="#e2e8f0"
+              stroke="rgba(255,255,255,0.28)"
               strokeWidth="3"
             />
             <circle
@@ -74,12 +74,15 @@ export const BackToTop = () => {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#2563eb" />
-                <stop offset="100%" stopColor="#4f46e5" />
+                <stop offset="0%" stopColor="#67e8f9" />
+                <stop offset="100%" stopColor="#ffffff" />
               </linearGradient>
             </defs>
           </svg>
-          <ArrowUp className="relative h-5 w-5 text-blue-600 transition-transform duration-300 group-hover:-translate-y-0.5" />
+          <ArrowUp className="relative h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+          <span className="relative mt-0.5 text-[0.55rem] font-extrabold tracking-[0.16em] text-white/90">
+            TOP
+          </span>
         </motion.button>
       )}
     </AnimatePresence>
